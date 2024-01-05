@@ -1,5 +1,6 @@
 package com.mpnsk.expandapistask.repository.impl;
 
+import com.mpnsk.expandapistask.exception.SavingNewRecordException;
 import com.mpnsk.expandapistask.repository.ProductRepository;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
@@ -29,7 +30,8 @@ public class ProductRepositoryImpl implements ProductRepository {
             if (transaction != null) {
                 transaction.rollback();
             }
-            throw new RuntimeException("Can't save product to db");
+            throw new SavingNewRecordException("Can't save product to db. " +
+                    "The query fields are probably different from the table fields in the DB.");
         }
     }
 
