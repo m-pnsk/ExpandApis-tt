@@ -8,6 +8,6 @@ import lombok.Data;
 public class UserRegistrationDto {
     @NotBlank
     private String username;
-    @Size(min = 6, message = "Too short")
+    @Size(min = 6, message = "Too short. Must be longer than 5")
     private String password;
 }
